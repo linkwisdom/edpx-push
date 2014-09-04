@@ -1,0 +1,21 @@
+#! /usr/bin/env node
+
+var upload = require('../index.js');
+
+var argv = process.argv;
+
+if ( argv.length > 2 ) {
+    var files = Array.prototype.slice.call(argv, 2);
+    var options = {};
+
+    files = files.filter(function (item) {
+        if (item.charAt(0) == '-' || item.indexOf('=') > -1) {
+            var kv = item.replace(/^\-+/, '').split('=');
+            options[kv[0]] = kv[1] || true;
+            return false;
+        }
+        return true;
+    });
+
+    upload.push(files, options);
+}

@@ -1,0 +1,30 @@
+{
+  "author": {
+    "name": "liandong liu"
+  },
+  "contacts": [
+    "liu@liandong.org"
+  ],
+  "name": "edpx-push",
+  "description": "push files",
+  "version": "0.0.2",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/linkwisdom/edpx-push.git"
+  },
+  "main": "./index.js",
+  "keywords": [],
+  "bin": {
+    "edpx-push": "./bin/edpx-push"
+  },
+  "dependencies": {
+    "loconf": "~0.0.1",
+    "request": "~2.40.0"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "scripts": {
+    "test": "node src/test.js"
+  }
+}
