@@ -14,23 +14,46 @@ cli.description = '构建目录或项目';
  * @type {Array}
  */
 cli.options = [
-    '[files]'
+    'file:',
+    'host:',
+    'uploadPath:',
+    'deployPath:',
+    'module:',
+    'deploy',
+    'machine:',
+    'password:'
 ];
 
 cli.main = function (args, opts) {
+    if (args == 'deploy') {
+        return upload.deploy(opts);
+    }
+
     var files = Array.prototype.slice.call(args, 0);
     var options = {};
 
     files = files.filter(function (item) {
-        if (item.charAt(0) == '-' || item.indexOf('=') > -1) {
-            var kv = item.replace(/^\-+/, '').split('=');
+        if (item.indexOf('=') > -1) {
+            var kv = item.split('=');
             options[kv[0]] = kv[1] || true;
             return false;
         }
         return true;
     });
 
-    upload.push(files, options);
+    for (var k in opts) {
+        options[k] = opts[k];
+    }
+
+    if (!options.deploy) {
+        options.deploy = false;
+    }
+
+    if (options.file) {
+        upload.push(option.file, options);
+    } else {
+        upload.push(files, options);
+    }
 };
 
 exports.cli = cli;

@@ -7,7 +7,7 @@
   ],
   "name": "edpx-push",
   "description": "push files",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "repository": {
     "type": "git",
     "url": "git://github.com/linkwisdom/edpx-push.git"
@@ -18,7 +18,8 @@
     "edpx-push": "./bin/edpx-push"
   },
   "dependencies": {
-    "loconf": "~0.0.1",
+    "loconf": "~0.0.2",
+    "conser": "~0.0.4",
     "request": "~2.40.0"
   },
   "engines": {
