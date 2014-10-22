@@ -3,7 +3,8 @@ var loconf = require('loconf');
 var request = require('request');
 
 var DEFAULT_CONF = {
-    host:  'http://api.stqa.baidu.com',
+//    host:  'http://api.stqa.baidu.com',
+    host: 'http://cq01-testing-fengchao18.vm.baidu.com:8081',
     uploadPath: '/env/fengchao/upload',
     deployPath: '/env/fengchao/fe_deployment',
     module: 'fc_nirvana_js'
