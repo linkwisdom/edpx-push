@@ -8,7 +8,7 @@ edpx-push
 ```sh
 > svn diff ~/work/fengchao/workspace >modify.patch
 > edp push modify.patch --deploy
-```sh
+```
 
 ## 机器配置
 - 配置一次即可
