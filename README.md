@@ -2,6 +2,10 @@ edpx-push
 =========
 > 推送并部署前端代码到测试环境
 
+### 安装
+- 自动安装(`edp push` 命令自动安装)
+- 手动安装 `npm install edpx-push -g`
+
 ### 使用方法
 - 需提前配置机器
 
@@ -9,6 +13,12 @@ edpx-push
 > svn diff ~/work/fengchao/workspace >modify.patch
 > edp push modify.patch --deploy
 ```
+
+### 预览效果
+- 进度状态为`finished`即可访问
+- 需要将目标机器的ip绑定到fctest
+- etc: `10.94.227.28 fctest.baidu.com`
+
 
 ## 机器配置
 - 配置一次即可
