@@ -19,7 +19,10 @@ cli.options = [
     'uploadPath:',
     'deployPath:',
     'module:',
+    'showError:',
     'deploy',
+    'reset',
+    'info',
     'machine:',
     'password:'
 ];
@@ -27,6 +30,8 @@ cli.options = [
 cli.main = function (args, opts) {
     if (args == 'deploy') {
         return upload.deploy(opts);
+    } else if (args == 'info') {
+        return upload.info(opts);
     }
 
     var files = Array.prototype.slice.call(args, 0);

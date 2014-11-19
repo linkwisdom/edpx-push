@@ -4,9 +4,11 @@ var request = require('request');
 
 var DEFAULT_CONF = {
 //    host:  'http://api.stqa.baidu.com',
-    host: 'http://cq01-testing-fengchao18.vm.baidu.com:8081',
+//    host: 'http://cq01-testing-fengchao18.vm.baidu.com:8081',
+    host: 'http://cp01-testing-taas14.cp01.baidu.com:8082',
     uploadPath: '/env/fengchao/upload',
     deployPath: '/env/fengchao/fe_deployment',
+    machine: 'fctest.baidu.com',
     module: 'fc_nirvana_js'
 };
 
@@ -75,6 +77,9 @@ exports.push = function (filename, option) {
                     exports.deploy(option);
                 }
             } else {
+                if (config.showError) {
+                    console.log(body);
+                }
                 console.log(' fail   %s ... Done ', filename);
             }
         } else {
@@ -110,12 +115,15 @@ exports.deploy = function (option) {
     var req = request.post(
         {
             url: deployPath,
+            'content-type': 'application/json',
             body: JSON.stringify(params)
         },
         function (err, resp, body) {
             if (!err) {
                 console.log(' deploy   %s ... Done ', moduleName);
+
                 console.log(params);
+                
                 try {
                     var response = JSON.parse(body);
                     if (response && response.navigator) {
@@ -125,6 +133,10 @@ exports.deploy = function (option) {
                 } catch (ex) {}
             } else {
                 console.log(' deploy   %s ... Fail \n %s', moduleName , err );
+
+                if (config.showError) {
+                    console.log(body);
+                }
             }
     });
 }
@@ -140,8 +152,12 @@ exports.pollingStatus = function (info, counter) {
 
     request(config.host + info.href, function (err, resp, body) {
         var result = JSON.parse(body);
+        // 兼容新接口
+        if (result.data && result.data.length) {
+            result = result.data[0];
+        }
 
-        var prefix = new Array(++counter).join('==');
+        var prefix = new Array(++counter).join('=');
         console.log('%s=> [ %s ]', prefix, result.phrase);
 
         if (result.phrase == 'finished' || result.phrase == 'fail' ) {
@@ -152,4 +168,8 @@ exports.pollingStatus = function (info, counter) {
             }, 5000);
         }
     });
+};
+
+exports.info = function () {
+    console.log(exports.config);
 };

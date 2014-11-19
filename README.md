@@ -37,6 +37,11 @@ edpx-push
 alias epub="svn diff ~/work/fengchao/workspace/nirvana-workspace/nirvana > ~/work/fengchao/workspace/modify.patch & edp push ~/work/fengchao/workspace/modify.patch --deploy"
 ``
 
+### 查看当前配置项目
+```sh
+edp push info
+```
+
 ### 使用反馈
 - 通过gist反馈使用问题
 - 直接联系作者
