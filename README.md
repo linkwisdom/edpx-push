@@ -25,8 +25,12 @@ edpx-push
 - 需要提前向QA或RD要求机器ip及密码
 
 ```sh
+    edp push module=fc_nirvana_js // 默认配置 nirvana
+    edp push module=fc_phoenix // 配置 phoenix
     edp push machine=10.94.227.28 password=xxxxx 
 ```
+- 项目模块的配置
+
 
 ### 快捷发布方式 
 - linux , mac 私用
