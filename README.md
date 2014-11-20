@@ -47,6 +47,16 @@ alias epub="svn diff ~/work/fengchao/workspace/nirvana-workspace/nirvana > ~/wor
 edp push info
 ```
 
+### 默认配置项目
+
+```sh
+    host='http://api.stqa.baidu.com' # 服务中转机器，不要修改
+    uploadPath='/env/fengchao/upload' # 提交服务
+    deployPath='/env/fengchao/fe_deployment' # 部署服务
+    machine='fctest.baidu.com'  # 目标fcinst开发机, 提前绑定
+    module='fc_nirvana_js' # 编译模块
+```
+
 ### 使用反馈
 - 通过gist反馈使用问题
 - 直接联系作者

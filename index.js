@@ -3,9 +3,9 @@ var loconf = require('loconf');
 var request = require('request');
 
 var DEFAULT_CONF = {
-//    host:  'http://api.stqa.baidu.com',
+    host:  'http://api.stqa.baidu.com',
 //    host: 'http://cq01-testing-fengchao18.vm.baidu.com:8081',
-    host: 'http://cp01-testing-taas14.cp01.baidu.com:8082',
+//    host: 'http://cp01-testing-taas14.cp01.baidu.com:8082',
     uploadPath: '/env/fengchao/upload',
     deployPath: '/env/fengchao/fe_deployment',
     machine: 'fctest.baidu.com',
@@ -111,12 +111,15 @@ exports.deploy = function (option) {
         machine_name: machineName,
         password: config.password
     };
-
+    var bodyContent = JSON.stringify(params);
     var req = request.post(
         {
             url: deployPath,
-            'content-type': 'application/json',
-            body: JSON.stringify(params)
+            headers: {
+               "Content-Type": 'application/json',
+               "Content-Length": bodyContent.length
+            },
+            body: bodyContent
         },
         function (err, resp, body) {
             if (!err) {
